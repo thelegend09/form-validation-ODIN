@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Registration Form</title>
+      <link rel="stylesheet" href="style.css" />
+      <script src="main.js" defer></script>
+   </head>
+   <body>
+      <form>
+         <div class="email">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <span class="message"></span>
+         </div>
+         <div class="country" for="country">Country:</label>
+            <select id="country" name="country" required>
+               <option value="">Select a country</option>
+               <option value="USA">USA</option>
+               <option value="Canada">Canadaa</option>
+               <option value="UK">UK</option>
+               <!-- Add more countries as options here -->
+            </select>
+            <span class="message"></span>
+         </div>
+         <div class="zip">
+            <label for="zip_code">Zip Code:</label>
+            <input type="text" id="zip_code" name="zip_code" required />
+            <span class="message"></span>
+         </div>
+         <div class="password-entry">
+            <div class="password-1">
+
+                <label for="password">Password:</label>
+                <input
+                type="password"
+                id="password"
+                name="password"
+                minlength="8"
+                required
+                />
+                <span class="message"></span>
+            </div>
+            <div class="password-2">
+
+                <label for="password_confirmation">Password Confirmation:</label>
+                <input
+                type="password"
+                id="password_confirmation"
+                name="password_confirmation"
+                minlength="8"
+                required
+                />
+                <span class="message"></span>
+            </div>
+         </div>
+         <button type="submit">Submit</button>
+      </form>
+   </body>
+</html>
