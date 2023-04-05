@@ -1,19 +1,107 @@
+:root {
+    --verdigris: hsla(184, 36%, 60%, 1);
+    --light-blue: hsla(175, 26%, 73%, 1);
+    --ash-gray: hsla(153, 30%, 77%, 1);
+    --tea-green: hsla(75, 57%, 81%, 1);
+    --straw: hsla(69, 56%, 63%, 1);
+}
+
+/* general styling */
+
 body {
-    width: 50vw;
+    background-color: var(--ash-gray);
+    padding-top: 10em;
+    width: 30vw;
     margin-left: auto;
     margin-right: auto;
+    font-family: "Work Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .password-entry {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1em;
+    /* align-items: flex-start; */
+    gap: 0.5em;
+    padding: 0;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 1em;
+}
+
+form div:focus-within,
+form div:hover {
+    background-color: white;
+    border-radius: 10px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    margin-top: .5rem;
+    padding: 10px;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+}
+
+input:focus {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: var(--ash-gray);
+    border-radius: 10px 10px 0 0;
+}
+
+input::placeholder {
+    font-weight: 600;
+
+}
+
+/* button  */
+
+button {
+    cursor: pointer;
+    margin-top: 1em;
+    align-self: center;
+    padding: 0.8em 1.8em;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--verdigris);
+    border: 0;
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: 250ms;
+}
+
+button:hover {
+    background-color: #fff;
+    color: var(--verdigris);
+    transform: scale(102%);
+}
+
+button:active {
+    border: 3px solid var(--verdigris);
+    transform: scale(98%);
+}
+
+/* input validation */
+
+input:not(:placeholder-shown):invalid {
+    border: 2px dashed red;
+}
+
+input:not(:placeholder-shown):valid {
+    border: 2px dashed blue;
 }

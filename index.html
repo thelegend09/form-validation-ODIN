@@ -1,59 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Registration Form</title>
-      <link rel="stylesheet" href="style.css" />
-      <script src="main.js" defer></script>
-   </head>
-   <body>
-      <form>
-         <div class="email">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Registration Form</title>
+   <link rel="stylesheet" href="style.css" />
+   <script src="main.js" defer></script>
+</head>
+
+<body>
+   <h1>Registration Form</h1>
+   <form>
+      <div class="email">
+         <label for="email">Email</label>
+         <input type="email" id="email" name="email" placeholder="john@example.com" required />
+         <div class="message"></div>
+      </div>
+
+      <div class="country">
+         <label for="country">Country</label>
+         <input type="text" id="country" name="country" placeholder="e.g. Papua New Guinea" required>
+         <div class="message"></div>
+      </div>
+
+      </div>
+      <div class="zip">
+         <label for="zip_code">Zip Code</label>
+         <input type="text" id="zip_code" name="zip_code" placeholder="e.g. J2J 2J2 " required />
+         <div class="message"></div>
+      </div>
+      <div class="password-entry">
+
+         <div class="password-1">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" minlength="8" placeholder="••••••••" required />
             <div class="message"></div>
          </div>
 
-         <div class="country">
-            <label for="country">Country</label>
-            <input type="text" id="country" name="country" placeholder="e.g. Papua New Guinea" required>
+         <div class="password-2">
+            <label for="password_confirmation">Password Confirmation</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="••••••••"
+               minlength="8" required />
             <div class="message"></div>
          </div>
+      </div>
+      <button type="submit">Submit</button>
+   </form>
+</body>
 
-         </div>
-         <div class="zip">
-            <label for="zip_code">Zip Code:</label>
-            <input type="text" id="zip_code" name="zip_code" placeholder="e.g. J2J 2J2 " required />
-            <div class="message"></div>
-         </div>
-         <div class="password-entry">
-            <div class="password-1">
-                <label for="password">Password:</label>
-                <input
-                type="password"
-                id="password"
-                name="password"
-                minlength="8"
-                placeholder="••••••••"
-                required
-                />
-                <div class="message"></div>
-            </div>
-            <div class="password-2">
-
-                <label for="password_confirmation">Password Confirmation:</label>
-                <input
-                type="password"
-                id="password_confirmation"
-                name="password_confirmation"
-                minlength="8"
-                required
-                />
-                <div class="message"></div>
-            </div>
-         </div>
-         <button type="submit">Submit</button>
-      </form>
-   </body>
 </html>
