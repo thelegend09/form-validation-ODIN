@@ -7,41 +7,56 @@
    <title>Registration Form</title>
    <link rel="stylesheet" href="style.css" />
    <script src="main.js" defer></script>
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
-   <h1>Registration Form</h1>
    <form>
-      <div class="email">
+      <h1>Registration Form</h1>
+      <div class="email container">
          <label for="email">Email</label>
          <input type="email" id="email" name="email" placeholder="john@example.com" required />
          <div class="message"></div>
       </div>
 
-      <div class="country">
+      <div class="country container">
          <label for="country">Country</label>
-         <input type="text" id="country" name="country" placeholder="e.g. Papua New Guinea" required>
+         <input type="text" id="country" pattern="[a-zA-Z -]{3,}" name="country" placeholder="e.g. Papua New Guinea"
+            required>
          <div class="message"></div>
       </div>
 
       </div>
-      <div class="zip">
+      <div class="zip container">
          <label for="zip_code">Zip Code</label>
          <input type="text" id="zip_code" name="zip_code" placeholder="e.g. J2J 2J2 " required />
          <div class="message"></div>
       </div>
       <div class="password-entry">
 
-         <div class="password-1">
+         <div class="password-1 container">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" minlength="8" placeholder="••••••••" required />
-            <div class="message"></div>
+            <input type="password" id="password" name="password" placeholder="••••••••" required />
+            <div class="message">
+               <p class="pwdLength">
+                  <i class="ri-close-circle-line"></i>
+                  Password has at least 8 characters
+               </p>
+               <p class="pwdChar">
+                  <i class="ri-close-circle-line"></i>
+                  Password has special characters
+               </p>
+               <p class="pwdCapital">
+                  <i class="ri-close-circle-line"></i>
+                  Password has at least one capital letter
+               </p>
+            </div>
          </div>
 
-         <div class="password-2">
+         <div class="password-2 container">
             <label for="password_confirmation">Password Confirmation</label>
             <input type="password" id="password_confirmation" name="password_confirmation" placeholder="••••••••"
-               minlength="8" required />
+               required />
             <div class="message"></div>
          </div>
       </div>

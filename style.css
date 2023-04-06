@@ -10,8 +10,8 @@
 
 body {
     background-color: var(--ash-gray);
-    padding-top: 10em;
-    width: 30vw;
+    padding-top: 3em;
+    max-width: 30em;
     margin-left: auto;
     margin-right: auto;
     font-family: "Work Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,6 +21,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+
 }
 
 .password-entry {
@@ -31,16 +32,17 @@ form {
     padding: 0;
 }
 
-form div {
+.container {
     display: flex;
     flex-direction: column;
     padding: 0.5em 1em;
+    border-radius: 10px;
 }
 
-form div:focus-within,
-form div:hover {
-    background-color: white;
-    border-radius: 10px;
+.container:focus-within,
+.container:hover {
+    background-color: rgba(255, 255, 255, 0.665);
+
 }
 
 input {
@@ -100,16 +102,65 @@ button:active {
 .invalid,
 .valid {
     background-repeat: no-repeat;
-    background-position: 97%;
+    background-position: 99% 10%;
     background-size: 1.8em;
 }
 
+
 .valid {
     background-color: var(--tea-green);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11.0026 16L6.75999 11.7574L8.17421 10.3431L11.0026 13.1716L16.6595 7.51472L18.0737 8.92893L11.0026 16Z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+    border: 2px solid green;
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11.0026 16L6.75999 11.7574L8.17421 10.3431L11.0026 13.1716L16.6595 7.51472L18.0737 8.92893L11.0026 16Z' fill='%23000'%3E%3C/path%3E%3C/svg%3E"); */
 }
 
 .invalid {
-    background-color: #ec8784;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+    /* background-color: #ec8784; */
+    background-color: white;
+    border: 2px solid red;
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z' fill='%23000'%3E%3C/path%3E%3C/svg%3E"); */
+}
+
+/* <i class="ri-close-circle-line"></i> */
+/* <i class="ri-checkbox-circle-line"></i> */
+/* message */
+.message {
+    display: none;
+    font-size: 0.9rem;
+    padding: 0;
+    user-select: none;
+    margin-top: 0.1em;
+}
+
+.message {
+    color: red;
+    margin: 0.5em 0;
+
+}
+
+.message p {
+    margin: 0.1em 0;
+}
+
+.message i {
+    margin-right: 0.2em;
+}
+
+/* only for password */
+.password-1 .message p {}
+
+
+
+input:not(:placeholder-shown):valid+.message {
+    display: none
+}
+
+/* when it's invalid, keep showing the error message div */
+input:not(:placeholder-shown):invalid+.message {
+    display: block;
+}
+
+
+
+input:focus-within+.message {
+    display: block !important;
 }
