@@ -205,19 +205,19 @@ function fieldVerifCountry() {
     let countryDiv = document.querySelector("div.country");
     let countryInput = document.querySelector(".country input");
     let countryMessage = document.querySelector(".country .message");
-    let countryCounter = 0;
+    let counter = 0;
 
     countryDiv.addEventListener(
         "focusout",
         (e) => {
-            countryCounter++;
+            counter++;
             validateField(e.target.value);
         },
         { once: true }
     );
 
     countryDiv.addEventListener("input", (e) => {
-        if (countryCounter === 0) return;
+        if (counter === 0) return;
         validateField(e.target.value);
     });
 
@@ -244,8 +244,6 @@ function fieldVerifCountry() {
     }
 }
 
-//  EMAIL
-
 function fieldVerifEmail() {
     let emailDiv = document.querySelector("div.email");
     let emailMessage = document.querySelector(".email .message");
@@ -253,7 +251,7 @@ function fieldVerifEmail() {
     emailDiv.addEventListener(
         "focusout",
         (e) => {
-            emailCounter++;
+            counter++;
             validateField(e.target.value);
         },
         { once: true }
@@ -286,7 +284,116 @@ function fieldVerifEmail() {
     }
 }
 
+function fieldVerifZip() {
+    let zipDiv = document.querySelector("div.zip");
+    let zipInput = document.querySelector(".zip input");
+    let zipMessage = document.querySelector(".zip .message");
+    let counter = 0;
+
+    // get all letters in uppercase
+    // get all letters in uppercase
+    zipDiv.addEventListener("input", (e) => {
+        zipInput.value = e.target.value.toUpperCase();
+    });
+
+    //  validate field
+    zipDiv.addEventListener(
+        "focusout",
+        (e) => {
+            counter++;
+            validateField(e.target.value);
+        },
+        { once: true }
+    );
+
+    zipDiv.addEventListener("input", (e) => {
+        if (counter === 0) return;
+        validateField(e.target.value);
+    });
+
+    function validateField(value) {
+        // let words = e.target.value;
+        if (value === "") {
+            undoValidation(zipDiv);
+        } else {
+            toggleClasses(zipDiv, "valid");
+        }
+    }
+
+    function capitalizeAllLetter(value) {
+        return value.toUpperCase();
+    }
+}
+
+function fieldVerifPassword1() {
+    let passwordDiv = document.querySelector(".password-1");
+    let password = document.querySelector(".password-1 input");
+
+    password.addEventListener("input", (e) => {
+        validateField(e.target.value);
+    });
+
+    function validateField(pwd) {
+        if (pwd == "") {
+            console.log("it's empty");
+            undoValidation(passwordDiv);
+            return;
+        }
+
+        if (hasOneCapital(pwd)) {
+            let message = document.querySelector(".password-1 .pwdCapital");
+            let icon = document.querySelector(".password-1 .pwdCapital i");
+
+            message.style.color = "green";
+            icon.style.color = "green";
+            // below works only because I'm using RemixIcon
+            icon.className = "ri-checkbox-circle-line";
+        }
+
+        if (isLongEnough(pwd)) {
+            let message = document.querySelector(".password-1 .pwdLength");
+            let icon = document.querySelector(".password-1 .pwdLength i");
+
+            message.style.color = "green";
+            icon.style.color = "green";
+            // below works only because I'm using RemixIcon
+            icon.className = "ri-checkbox-circle-line";
+        }
+
+        if (hasSpecialChar(pwd)) {
+            let message = document.querySelector(".password-1 .pwdChar");
+            let icon = document.querySelector(".password-1 .pwdChar i");
+
+            message.style.color = "green";
+            icon.style.color = "green";
+            // below works only because I'm using RemixIcon
+            icon.className = "ri-checkbox-circle-line";
+        }
+
+        if (hasOneCapital(pwd) && isLongEnough(pwd) && hasSpecialChar(pwd)) {
+            toggleClasses(passwordDiv, "valid");
+        } else {
+            console.log("lksdjf");
+            toggleClasses(passwordDiv, "invalid");
+        }
+    }
+
+    function hasOneCapital(value) {
+        let specialChar = /[A-Z]/;
+        return specialChar.test(value);
+    }
+
+    function isLongEnough(value) {
+        return value.length >= 8;
+    }
+    function hasSpecialChar(value) {
+        let specialChar = /[!@#$%^&*`(),.?":{}|<>]/;
+        return specialChar.test(value);
+    }
+}
+
 function undoValidation(element) {
+    // returns to default state
     if (element.classList.contains("valid")) {
         element.classList.remove("valid");
     }
@@ -315,4 +422,6 @@ function toggleClasses(element, makeValidorInvalid) {
 (function init() {
     fieldVerifEmail();
     fieldVerifCountry();
+    fieldVerifZip();
+    fieldVerifPassword1();
 })();
