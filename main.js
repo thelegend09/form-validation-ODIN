@@ -340,36 +340,43 @@ function fieldVerifPassword1() {
             return;
         }
 
-        if (hasOneCapital(pwd)) {
-            let message = document.querySelector(".password-1 .pwdCapital");
-            let icon = document.querySelector(".password-1 .pwdCapital i");
+        // check capital letter
+        let capitalMessage = document.querySelector(".password-1 .pwdCapital");
+        let capitalIcon = document.querySelector(".password-1 .pwdCapital i");
 
-            message.style.color = "green";
-            icon.style.color = "green";
-            // below works only because I'm using RemixIcon
-            icon.className = "ri-checkbox-circle-line";
+        if (hasOneCapital(pwd)) {
+            toggleClasses(capitalMessage, "valid");
+            capitalIcon.className = "ri-checkbox-circle-line";
+        } else {
+            toggleClasses(capitalMessage, "invalid");
+            capitalIcon.className = "ri-close-circle-line";
         }
+
+        // check length
+        let lengthMessage = document.querySelector(".password-1 .pwdLength");
+        let lengthIcon = document.querySelector(".password-1 .pwdLength i");
 
         if (isLongEnough(pwd)) {
-            let message = document.querySelector(".password-1 .pwdLength");
-            let icon = document.querySelector(".password-1 .pwdLength i");
-
-            message.style.color = "green";
-            icon.style.color = "green";
-            // below works only because I'm using RemixIcon
-            icon.className = "ri-checkbox-circle-line";
+            toggleClasses(lengthMessage, "valid");
+            lengthIcon.className = "ri-checkbox-circle-line";
+        } else {
+            toggleClasses(lengthMessage, "invalid");
+            lengthIcon.className = "ri-close-circle-line";
         }
+
+        // check special charactesr
+        let charMessage = document.querySelector(".password-1 .pwdChar");
+        let charIcon = document.querySelector(".password-1 .pwdChar i");
 
         if (hasSpecialChar(pwd)) {
-            let message = document.querySelector(".password-1 .pwdChar");
-            let icon = document.querySelector(".password-1 .pwdChar i");
-
-            message.style.color = "green";
-            icon.style.color = "green";
-            // below works only because I'm using RemixIcon
-            icon.className = "ri-checkbox-circle-line";
+            toggleClasses(charMessage, "valid");
+            charIcon.className = "ri-checkbox-circle-line";
+        } else {
+            toggleClasses(charMessage, "invalid");
+            charIcon.className = "ri-close-circle-line";
         }
 
+        // check if all previous test have been passed
         if (hasOneCapital(pwd) && isLongEnough(pwd) && hasSpecialChar(pwd)) {
             toggleClasses(passwordDiv, "valid");
         } else {
@@ -389,6 +396,55 @@ function fieldVerifPassword1() {
     function hasSpecialChar(value) {
         let specialChar = /[!@#$%^&*`(),.?":{}|<>]/;
         return specialChar.test(value);
+    }
+}
+
+function fieldVerifPassword2() {
+    let passwordDiv2 = document.querySelector(".password-2");
+    let password2 = document.querySelector(".password-2 input");
+
+    let counter = 0;
+
+    password2.addEventListener(
+        "focusout",
+        (e) => {
+            counter++;
+            validateField(e.target.value);
+        },
+        { once: true }
+    );
+
+    password2.addEventListener("input", (e) => {
+        if (counter === 0) return;
+        validateField(e.target.value);
+    });
+
+    function validateField(value) {
+        let otherPassword = document.querySelector(".password-1 input");
+        let passwordDiv = document.querySelector(".password-2");
+        let message = document.querySelector(".password-2 .message");
+
+        if (value === "") {
+            undoValidation(passwordDiv);
+            undoValidation(message);
+            message.textContent = "";
+
+            return;
+        }
+
+        if (isSame(otherPassword.value, value)) {
+            toggleClasses(passwordDiv, "valid");
+            toggleClasses(message, "valid");
+            message.textContent = "Password is the same!";
+        } else {
+            toggleClasses(passwordDiv, "invalid");
+            toggleClasses(message, "invalid");
+            message.textContent = "Password is not the same. Check again.";
+        }
+    }
+
+    function isSame(a, b) {
+        return a === b;
     }
 }
 
@@ -424,4 +480,5 @@ function toggleClasses(element, makeValidorInvalid) {
     fieldVerifCountry();
     fieldVerifZip();
     fieldVerifPassword1();
+    fieldVerifPassword2();
 })();
